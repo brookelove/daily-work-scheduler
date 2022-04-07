@@ -30,33 +30,34 @@ var hourEl = $('#hour')
 var userInput = $('#userInput')
 var local = JSON.parse(localStorage.getItem("save"))
 var othercontent = []
-var hourplace = Number(hourEl.text)
-var timeplace = Number(moment().format('HH')) 
 // var endput= local[0]
 //current day
 //written as Thursday, September 5th
-    var currentDay = moment();
-   $('#currentDay').text(currentDay.format('dddd, MMMM Do'));
-
-
-    //  var today = $('#today').moment().format('HH');
-    //how to write the current time of and compare it to a number 
-    //write in for loop
-    //make it an object?
-     if ( timeplace < hourplace) {
-        $('.textarea').addClass('past')
-        $('.textarea').removeClass('future')
-        $('.textarea').removeClass('present')
-     } else if (timeplace === hourplace) {
-        $('.textarea').addClass('present')
-        $('.textarea').removeClass('past')
-        $('.textarea').removeClass('future')
-     } else if (timeplace > hourplace) {
-        $('.textarea').addClass('future')
-        $('.textarea').removeClass('past')
-        $('.textarea').removeClass('present')
-        
-    }
+var currentDay = moment();
+$('#currentDay').text(currentDay.format('dddd, MMMM Do'));
+//  var today = $('#today').moment().format('HH');
+//how to write the current time of and compare it to a number 
+//write in for loop
+//make it an object?
+$('textarea').each(function(){
+    var hourplace = $(this).attr('data-hour')
+    var timeplace = currentDay.format('HH')
+    console.log($(this).attr('data-hour'))
+    if (timeplace < hourplace) {
+        $(this).attr("class",'past')
+        // $('.textarea').removeClass('future')
+        // $('.textarea').removeClass('present')
+       } else if (timeplace === hourplace) {
+       $(this).attr('class','present')
+       // $('.textarea').removeClass('past')
+       // $('.textarea').removeClass('class','future')
+    } else if (timeplace > hourplace) {
+       $(this).attr('class','future')
+       // $('.textarea').removeClass('past')
+       // $('.textarea').removeClass('present')
+       
+   }
+    })
 
 function savefunc (){
     var save = [{
