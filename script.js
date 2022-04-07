@@ -43,7 +43,7 @@ $('textarea').each(function(){
     var hourplace = $(this).attr('data-hour')
     var timeplace = currentDay.format('HH')
     console.log($(this).attr('data-hour'))
-    if (timeplace < hourplace) {
+    if (timeplace > hourplace) {
         $(this).attr("class",'past')
         // $('.textarea').removeClass('future')
         // $('.textarea').removeClass('present')
@@ -51,7 +51,7 @@ $('textarea').each(function(){
        $(this).attr('class','present')
        // $('.textarea').removeClass('past')
        // $('.textarea').removeClass('class','future')
-    } else if (timeplace > hourplace) {
+    } else if (timeplace < hourplace) {
        $(this).attr('class','future')
        // $('.textarea').removeClass('past')
        // $('.textarea').removeClass('present')
@@ -64,6 +64,8 @@ function savefunc (){
         text: $(this).siblings('textarea').val(),
         hour: $(this).siblings('div').text()
     }]
+    console.log(text)
+     console.log(hour)
     othercontent.push(save)
     var pullingcontent = JSON.stringify(othercontent)
     
