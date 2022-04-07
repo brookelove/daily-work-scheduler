@@ -45,17 +45,10 @@ $('textarea').each(function(){
     console.log($(this).attr('data-hour'))
     if (timeplace > hourplace) {
         $(this).attr("class",'past')
-        // $('.textarea').removeClass('future')
-        // $('.textarea').removeClass('present')
        } else if (timeplace === hourplace) {
        $(this).attr('class','present')
-       // $('.textarea').removeClass('past')
-       // $('.textarea').removeClass('class','future')
     } else if (timeplace < hourplace) {
        $(this).attr('class','future')
-       // $('.textarea').removeClass('past')
-       // $('.textarea').removeClass('present')
-       
    }
     })
 
