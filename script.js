@@ -51,18 +51,18 @@ $('textarea').each(function(){
 })
 var text = $(this).siblings('textarea').val()
 var hour = $(this).parent().siblings('div').text().trim()
+
+// function renderlasttext () {
+    //     var rendertext = JSON.parse(localStorage.getItem('save'))
+    //     if (rendertext!== null) {
+        //         $('textarea').html() = rendertext.text
+        //     } else {
+            //         return;
+            //     }
+            // }
+            
 var saved = JSON.parse(localStorage.getItem("save")) || []
 localStorage.setItem('saved', JSON.stringify(saved))
-
-function renderlasttext () {
-  var rendertext = JSON.parse(localStorage.getItem('save'))
-    if (rendertext!== null) {
-        $('textarea').html() = rendertext.text
-    } else {
-        return;
-    }
-    
- }
 
 function savefunc (){
     // var text = $(this).siblings('textarea').val()
@@ -88,4 +88,4 @@ function savefunc (){
 }
 
 saveBtn.click(savefunc)
-renderlasttext ()
+// renderlasttext ()
