@@ -43,36 +43,49 @@ $('textarea').each(function(){
     // console.log($(this).attr('data-hour'))
     if (timeplace > hourplace) {
         $(this).attr("class",'past')
-       } else if (timeplace === hourplace) {
-       $(this).attr('class','present')
+    } else if (timeplace === hourplace) {
+        $(this).attr('class','present')
     } else if (timeplace < hourplace) {
-       $(this).attr('class','future')
-   }
-    })
+        $(this).attr('class','future')
+    }
+})
+var text = $(this).siblings('textarea').val()
+var hour = $(this).parent().siblings('div').text().trim()
 var saved = JSON.parse(localStorage.getItem("save")) || []
 localStorage.setItem('saved', JSON.stringify(saved))
 
+function renderlasttext () {
+  var rendertext = JSON.parse(localStorage.getItem('save'))
+    if (rendertext!== null) {
+        $('textarea').html() = rendertext.text
+    } else {
+        return;
+    }
+    
+ }
 
 function savefunc (){
-    var text = $(this).siblings('textarea').val()
-    var hour = $(this).parent().siblings('div').text().trim()
-console.log(text)
-console.log(hour)
-
-console.log(saved)
-$(".database").each(function (){
-    var text = $(this).siblings('textarea').val()
-    var hour = $(this).parent().siblings('div').text().trim()
-    if(saved.length = null) {
-        for (i = 0, i < saved.length; i++;) {
-            if(hour === saved[i].hour) {
-                console.log($(this).val())
-                $(this).val(saved[i].text)
-            }
+    // var text = $(this).siblings('textarea').val()
+    // var hour = $(this).parent().siblings('div').text().trim()
+    console.log(text)
+    console.log(hour)
+    
+    console.log(saved)
+    $(".database").each(function (){
+        var text = $(this).siblings('textarea').val()
+        var hour = $(this).parent().siblings('div').text().trim()
+        if(saved.length = null) {
+    for (i = 0, i < saved.length; i++;) {
+        if(hour === saved[i].hour) {
+            console.log($(this).val())
+            $(this).val(saved[i].text)
         }
     }
- })
+        }
+    })
 
+    
 }
+
 saveBtn.click(savefunc)
-console.log(saveBtn);
+renderlasttext ()
