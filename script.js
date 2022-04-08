@@ -28,9 +28,7 @@
 var saveBtn = $('#save')
 var hourEl = $('#hour')
 var userInput = $('#userInput')
-var local = JSON.parse(localStorage.getItem("save"))
-var othercontent = []
-// var endput= local[0]
+
 //current day
 //written as Thursday, September 5th
 var currentDay = moment();
@@ -42,7 +40,7 @@ $('#currentDay').text(currentDay.format('dddd, MMMM Do'));
 $('textarea').each(function(){
     var hourplace = $(this).attr('data-hour')
     var timeplace = currentDay.format('HH')
-    console.log($(this).attr('data-hour'))
+    // console.log($(this).attr('data-hour'))
     if (timeplace > hourplace) {
         $(this).attr("class",'past')
        } else if (timeplace === hourplace) {
@@ -51,28 +49,33 @@ $('textarea').each(function(){
        $(this).attr('class','future')
    }
     })
+var saved = JSON.parse(localStorage.getItem("save")) || []
+localStorage.setItem('saved', JSON.stringify(saved))
+
 
 function savefunc (){
-    var save = [{
-        text: $(this).siblings('textarea').val(),
-        hour: $(this).siblings('div').text()
-    }]
-    console.log(text)
-     console.log(hour)
-    othercontent.push(save)
-    var pullingcontent = JSON.stringify(othercontent)
-    
-    if (local === null) {
-    JSON.stringify(pullingcontent)
-    localStorage.setItem("text", pullingcontent)
+    var text = $(this).siblings('textarea').val()
+    var hour = $(this).parent().siblings('div').text().trim()
+console.log(text)
+console.log(hour)
 
-    } else {
-    othercontent.push(JSON.parse(localStorage.getItem("text")))
-    localStorage.setItem("text", pullingcontent)
+console.log(saved)
+$(".database").each(function (){
+    var text = $(this).siblings('textarea').val()
+    var hour = $(this).parent().siblings('div').text().trim()
+    if(saved.length = null) {
+        for (i = 0, i < saved.length; i++;) {
+            if(hour === saved[i].hour) {
+                console.log($(this).val())
+                $(this).val(saved[i].text)
+            }
+        }
     }
+ })
 
 }
+
+
+
+
 saveBtn.click(savefunc)
-
-
-
