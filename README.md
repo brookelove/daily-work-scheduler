@@ -12,3 +12,5 @@ this is a daily scheduler that tells you the past, present, and future by using 
 this was a new task for me to try. during this process I have learned how to remake console log everything, which in turn takes longer but allows for everything to be checked at each step.
 
 ## gitHub Links
+https://github.com/brookelove/daily-work-scheduler
+https://brookelove.github.io/daily-work-scheduler/
