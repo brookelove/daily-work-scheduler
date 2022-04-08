@@ -25,7 +25,7 @@
             //push it to the text area again to make sure its reading correct 
 //WORKSPACE
 //elements
-var saveBtn = $('#save')
+var saveBtn = $('.saveBtn')
 var hourEl = $('#hour')
 var userInput = $('#userInput')
 
@@ -74,8 +74,5 @@ $(".database").each(function (){
  })
 
 }
-
-
-
-
 saveBtn.click(savefunc)
+console.log(saveBtn);
